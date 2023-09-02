@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "article-apply-test-in-jupyter-notebook"
+version = "0.1.0"
+description = "Article apply test in jupyter notebook"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.group.dev.dependencies]
+testbook = "^0.4.2"
+pytest = "^7.4.1"
+pandas = "^2.1.0"
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
