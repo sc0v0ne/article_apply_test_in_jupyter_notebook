@@ -1,0 +1,8 @@
+.venv
+.env
+venv
+env
+
+.ipynb_checkpoints
+
+.pytest_cache
