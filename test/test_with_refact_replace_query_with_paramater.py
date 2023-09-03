@@ -1,5 +1,8 @@
 from testbook import testbook
 import pytest
+import os
+
+os.environ['JUPYTER_PLATFORM_DIRS'] = '1'
 
 @testbook('./notebook_replace_query_with_parameter.ipynb', execute=True)
 def test_treatment_missing_values_refc_01(tb):
