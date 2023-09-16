@@ -2,7 +2,7 @@
 
 I created this project to redo a college project. Where I applied methods from the refactoring book.
 
-[Post Dev.to]()
+[Post Dev.to](https://dev.to/sc0v1n0/applying-tests-to-jupyter-notebook-functions-and-refactoring-old-code-p76)
 
 📗 Book: [Refactoring - Improving the design of existing code - Martin Fowler](https://www.amazon.com/-/pt/dp/B087N8LKYB/ref=sr_1_1?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=M4T29CCKD30E&keywords=refatora%C3%A7%C3%A3o&qid=1651322207&sprefix=refatora%C3%A7%C3%A3o%2Caps%2C203&sr=8-1)
 
