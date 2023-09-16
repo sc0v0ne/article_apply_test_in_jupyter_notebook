@@ -1,3 +1,5 @@
+import json
+import pandas as pd
 from testbook import testbook
 import pytest
 import os
@@ -52,3 +54,69 @@ def test_treatment_missing_values_refc_05(tb):
     assert "missing 1 required positional argument" in str(e_info.value)
 
 
+@testbook('./notebook_replace_query_with_parameter.ipynb', execute=True)
+def test_treatment_missing_values_final_function(tb):
+    function_notebook = tb.ref("treatment_binary")
+    tb.inject("""
+        df = pd.read_csv('data/dataset_mammography.csv')
+    """)
+    df = tb.ref("df")
+
+    tb.inject("""
+        cols_mean = ['margin', 'density', 'BI_RADS', 'shape']
+    """)
+    cols_mean = tb.ref("cols_mean")
+    
+    tb.inject("""
+        cols_mode = ['age']
+    """)
+    cols_mode = tb.ref("cols_mode")
+
+    tb.inject("""
+        binary = 'severity'
+    """)
+    binary = tb.ref("binary")
+
+    tb.inject("""
+        method_f = 'mean'
+    """)
+    method_f = tb.ref("method_f")
+
+    tb.inject("""
+        method_f2 = 'mode'
+    """)
+    method_f2 = tb.ref("method_f2")
+
+    tb.inject("""
+        method_f3 = 'Cake'
+    """)
+    method_f3 = tb.ref("method_f3")
+
+
+    result = function_notebook(
+        df,
+        cols_mean,
+        binary,
+        method_f
+        )
+    assert result.shape[1] == 6
+    assert result.shape[0] > 0
+
+    result = function_notebook(
+        df,
+        cols_mode,
+        binary,
+        method_f2
+        )
+    assert result.shape[1] == 6
+    assert result.shape[0] > 0
+    
+    with pytest.raises(Exception) as e_info:
+
+        result = function_notebook(
+            df,
+            cols_mode,
+            binary,
+            method_f3
+        )
+    assert "Method incorrect, use mean or mode" in str(e_info.value)
